@@ -1,0 +1,36 @@
+.formWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 10rem;
+}
+
+.formHead {
+    margin-bottom: 15px;
+}
+
+.formHead h3 {
+    font-weight: 600;
+    color: rgb(56, 56, 56);
+    line-height: 2.5rem;
+}
+
+.formWrap form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: calc(100% - 250px);
+    height: 250px;
+}
+
+.inputWrapper input{
+    border-radius: 4px;
+    background: #EDF2F7;
+    border: 1px solid transparent;
+    width: 25em;
+    margin: 10px;
+    height: 2em;
+}
