@@ -66,3 +66,12 @@ label{
     margin: 10px 0;
     padding: 4px 6px;
 }
+
+@media screen and (max-width: 750px) {
+    form{
+        padding: 0;
+    }
+    .formWrap {
+        padding: 1rem;
+    }
+}
