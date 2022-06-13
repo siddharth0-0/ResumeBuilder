@@ -25,7 +25,7 @@ function EducationForm() {
       <form>
         {formValues.map((item, index) => {
           return (
-            <div className="mainWrapper" key={index}>
+            <div className={classes.mainWrapper} key={index}>
               <div className='rowInputWrapper' >
                 <div className='shortInput' >
                   <label htmlFor='school'> School Name</label>

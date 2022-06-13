@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PersonalForm from '../component/PersonalForm'
-import classes  from './Details.module.css'
+import classes from './Details.module.css'
 import SkillForm from '../component/SkillForm'
 import ExperienceForm from '../component/ExperienceForm'
 import EducationForm from '../component/EducationForm'
@@ -13,19 +13,15 @@ function Details() {
         setstep(step + 1);
     };
 
-    // function for going to Previous step by decreasing step state by 1
     const prevStep = () => {
         setstep(step - 1);
     };
-
-
 
     switch (step) {
         case 1:
             return (
                 <>
                     <PersonalForm />
-                    {step}
                     <div className={classes.buttonWrapper}>
                         <button onClick={prevStep} disabled>Previous</button>
                         <button onClick={nextStep}>Next</button>
@@ -38,7 +34,6 @@ function Details() {
             return (
                 <>
                     <EducationForm />
-                    {step}
                     <div className={classes.buttonWrapper}>
                         <button onClick={prevStep}>Previous</button>
                         <button onClick={nextStep}>Next</button>
@@ -51,7 +46,6 @@ function Details() {
             return (
                 <>
                     <ExperienceForm />
-                    {step}
                     <div className={classes.buttonWrapper}>
                         <button onClick={prevStep}>Previous</button>
                         <button onClick={nextStep}>Next</button>

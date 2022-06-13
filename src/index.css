@@ -14,7 +14,7 @@ code {
 
 .formWrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   min-height: calc(100vh - 10rem);
   box-sizing: border-box;
@@ -31,7 +31,6 @@ code {
   padding: 0 5em;
   width: 75%;
 }
-
 
 .formHead {
   margin-bottom: 15px;
@@ -57,22 +56,22 @@ code {
   width: 300px;
 }
 
-.longInput{
+.longInput {
   display: flex;
   flex-direction: column;
 }
 
-.remove{
+.remove {
   background: #f17870;
   color: #ffff;
 }
 
-.add{
+.add {
   background: #b7e9cf;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 750px) {
   .formWrap {
     padding: 1rem !important;
-}
+  }
 }

@@ -1,12 +1,5 @@
 .mainWrapper{
-    margin-bottom: 20px;
-}
-
-h5 {
-    font-weight: 600;
-    color: rgb(56, 56, 56);
-    line-height: 2.5rem;
-    letter-spacing: 1px;
+    margin-bottom: 30px;
 }
 
 input {
@@ -26,11 +19,6 @@ textarea{
     padding: 6px;
 }
 
-.description{
-    display: flex;
-    flex-direction: column;
-}
-
 .btnWrap{
     text-align: center;
     margin: 15px 0;
@@ -47,7 +35,6 @@ textarea{
 .btnWrap button:hover{
     cursor: pointer;
     background: #a9e9c8;
-
 }
 
 @media screen and (max-width: 750px) {
