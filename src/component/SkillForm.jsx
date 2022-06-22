@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import classes from './SkillForm.module.css'
 
-function SkillForm() {
+function SkillForm(props) {
 
-  const [skillItem, setSkillItem] = useState(['item 1']);
+  const [skillItem, setSkillItem] = useState(['item']);
 
   const [skill, setSkill] = useState('')
 
@@ -16,6 +16,16 @@ function SkillForm() {
   const addSkillItem = (e) => {
     e.preventDefault();
     setSkillItem([...skillItem, skill])
+  }
+
+  // const onFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   props.handleNextStep();
+  // }
+
+  const onPreviousStep = (e)=>{
+    e.preventDefault();
+    props.handlePrevStep();
   }
 
   return (
@@ -43,6 +53,11 @@ function SkillForm() {
               </div>
             );
           })}
+        </div>
+
+        <div className='stepWrapper'>
+          <button onClick={onPreviousStep} >Previous</button>
+          <button>Submit</button>
         </div>
       </form>
     </div>

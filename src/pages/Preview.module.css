@@ -1,0 +1,24 @@
+.previewWrap{
+    padding: 1rem;
+    background: #FFFF;
+    width: 550px;
+    box-sizing: border-box;
+}
+
+.headWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headWrap h2{
+    text-transform: capitalize;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    font-family: "Libre Baskerville",serif;
+    font-weight: 400;
+}
+.info{
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 1px;
+}
