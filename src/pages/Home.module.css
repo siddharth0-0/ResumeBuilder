@@ -1,6 +1,10 @@
+.wrapper{
+    width: 100vw;
+    min-height: 100vh;
+}
+
 .header{
-    position: fixed;
-    width: 100%;
+    /* position: fixed; */
     right: 0px;
     z-index: 1;
     padding-top: 10px;
@@ -36,4 +40,24 @@
 .btn button:hover{
     cursor: pointer;
     background: #CBD5E0;
+}
+
+.heroWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.heroImage{
+    width: 48%;
+}
+.heroImage img{
+    width: 100%;
+}
+.heroText{
+    box-sizing: border-box;
+    width: 48%;
+    padding: 4rem 8rem;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
