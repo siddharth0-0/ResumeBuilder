@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
 import classes from './SkillForm.module.css'
+import { useNavigate } from "react-router-dom";
 
 function SkillForm(props) {
 
-  const [skillItem, setSkillItem] = useState(['item']);
+  const navigate = useNavigate();
+
+  const [skillItems, setSkillItem] = useState([]);
 
   const [skill, setSkill] = useState('')
 
   const removeSkillItem = (i) => {
-    let newForm = [...skillItem];
+    let newForm = [...skillItems];
     newForm.splice(i, 1);
     setSkillItem(newForm)
   }
 
   const addSkillItem = (e) => {
     e.preventDefault();
-    setSkillItem([...skillItem, skill])
+    setSkillItem([...skillItems, skill])
   }
 
-  // const onFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   props.handleNextStep();
-  // }
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem('skillData', JSON.stringify(skillItems));
+    navigate('/preview');
+  }
 
-  const onPreviousStep = (e)=>{
+  const onPreviousStep = (e) => {
     e.preventDefault();
     props.handlePrevStep();
   }
@@ -43,7 +47,7 @@ function SkillForm(props) {
         </div>
 
         <div className={classes.itemWrap}>
-          {skillItem.map((item, index) => {
+          {skillItems.map((item, index) => {
             return (
               <div key={index}>
                 <p className={classes.itemBox}>
@@ -57,7 +61,7 @@ function SkillForm(props) {
 
         <div className='stepWrapper'>
           <button onClick={onPreviousStep} >Previous</button>
-          <button>Submit</button>
+          <button onClick={onFormSubmit} >Submit</button>
         </div>
       </form>
     </div>

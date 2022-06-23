@@ -1,84 +1,97 @@
 import React from 'react'
 import { PDFExport } from '@progress/kendo-react-pdf';
 import classes from "./Preview.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
 
+  const navigate = useNavigate();
+
   const container = React.useRef(null);
-  const pdfExportComponent = React.useRef(null);
 
   const exportPDFWithComponent = () => {
-    if (pdfExportComponent.current) {
-      pdfExportComponent.current.save();
+    if (container.current) {
+      container.current.save();
     }
   };
 
-  const check = JSON.parse(localStorage.getItem('personalData'));
+  const personal = JSON.parse(localStorage.getItem('personalData'));
+  const education = JSON.parse(localStorage.getItem('educationData'));
+  const experience = JSON.parse(localStorage.getItem('experienceData'));
+  const skill = JSON.parse(localStorage.getItem('skillData'));
 
   return (
-    <>
-      {console.log('da', typeof(check))}
-      <button onClick={exportPDFWithComponent}>
-        Export with component
-      </button>
-      <PDFExport ref={pdfExportComponent} paperSize="A4" margin={40} fileName={'sample'} multiPage={"false"}>
-        <div className={classes.previewWrap}>
-          {check.map((item) => {
-            return (
-              <div className={classes.headWrap}>
-                <h2>Siddharth Agrawal</h2>
+    <div className={classes.mainWrap}>
+      <div className={classes.downloadWrap}>
+        <button onClick={exportPDFWithComponent}>
+          Download PDF
+        </button>
+        <span>--- OR ---</span>
+        <button onClick={() => navigate('/details')}>
+          Create a new
+        </button>
+      </div>
 
-                <div className={classes.info}>
-                  <p>c23, vasnat vihar | Indore</p>
-                  <p>agrawalsid05@gmail.com</p>
-                  <p>+91 9109919280</p>
-                  <p>github.com/siddharth0-0</p>
-                  <p>github.com/siddharth0-0</p>
-                </div>
-              </div>
-            )
-          })}
-
-
-          <div className="detailWrapper">
-            <div className="main-edu-wrap">
-              <h3>Education History</h3>
-              <div className="edu-wrap">
-                <h4>St. Arnold Hr. Sec School</h4>
-                <p>Degree</p><p>Stert - End Month</p>
-              </div>
-              <div className="edu-wrap">
-                <h4>St. Arnold Hr. Sec School</h4>
-                <p>Degree</p><p>Stert - End Month</p>
+      <div className={classes.resumeWrap}>
+        <PDFExport ref={container} paperSize="A4" margin={20} fileName={'sample'} multiPage={"false"}>
+          <div className={classes.previewWrap}>
+            <div className={classes.headWrap}>
+              <h2>{personal.firstName} {personal.lastName}</h2>
+              <div className={classes.info}>
+                <p>{personal.address} | {personal.city}</p>
+                <p>{personal.email}</p>
+                <p>{personal.phoneNumber}</p>
+                <p>{personal.git.replace(/^https?:\/\//, '')}</p>
+                <p>{personal.linkedin.replace(/^https?:\/\//, '')}</p>
               </div>
             </div>
-            <div className="main-exp-wrap">
-              <h3>Experience</h3>
-              <div className="exp-history">
-                <h4>Company Name</h4>
-                <p>Position Name</p> <p>Place</p> <p>From - End Month</p>
-                <p>Decription <br />second line <br />third line</p>
+
+            <div className={classes.detailWrapper}>
+              <div className={classes.leftWrap}>
+                <div className={classes.sectionWrap}>
+                  <h3>Education</h3>
+                  {education.map((item, index) => {
+                    return (
+                      <div key={index} className={classes.itemWrap}>
+                        <h4>{item.school}</h4>
+                        <p>{item.degree} | {item.startMonth} - {item.endMonth}</p>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <div className={classes.sectionWrap}>
+                  <h3>Experience</h3>
+                  {experience.map((exp, index) => {
+                    return (
+                      <div key={index} className={classes.itemWrap}>
+                        <h4>{exp.company}</h4>
+                        <p>{exp.job} | {exp.startMonth} - {exp.endMonth}</p>
+                        <h6>{exp.description}</h6>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
-              <div className="exp-history">
-                <h4>Company Name</h4>
-                <p>Position Name</p> <p>Place</p> <p>From - End Month</p>
-                <p>Decription <br />second line <br />third line</p>
-              </div>
-              <div className="exp-history">
-                <h4>Company Name</h4>
-                <p>Position Name</p> <p>Place</p> <p>From - End Month</p>
-                <p>Decription <br />second line <br />third line</p>
-              </div>
-              <div className="exp-history">
-                <h4>Company Name</h4>
-                <p>Position Name</p> <p>Place</p> <p>From - End Month</p>
-                <p>Decription <br />second line <br />third line</p>
+
+              <div className={classes.rightWrap}>
+                <div className={classes.sectionWrap}>
+                  <h3>Skills</h3>
+                  <div className={classes.skillWrap}>
+                    {skill.map((item) => {
+                      return (
+                        <span>{item}</span>
+                      )
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </PDFExport>
-    </>
+        </PDFExport>
+      </div>
+
+    </div>
   )
 
 };
