@@ -1,24 +1,23 @@
 import React from "react";
-import classes from "./Home.module.css";
-import Resume from "../../src/Resume.png";
+import styles from "./Home.module.css";
+import Resume from "../assets/Resume.png";
 import { Link, useNavigate } from "react-router-dom";
-import H from "../../src/h.png";
-import Ho from "../../src/ho.png";
+import H from "../assets/h.png";
 
 function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className={classes.wrapper}>
-      <header className={classes.header}>
-        <div className={classes.navWrapper}>
-          <nav className={classes.nav}>
-            <div className={classes.logo}>
+    <div className={styles.wrapper}>
+      <header className={styles.header}>
+        <div className={styles.navWrapper}>
+          <nav className={styles.nav}>
+            <div className={styles.logo}>
               <Link to={"/"}>
                 <img src={Resume} alt="Logo" />
               </Link>
             </div>
-            <div className={classes.btn}>
+            <div className={styles.btn}>
               <button
                 onClick={() => {
                   navigate("/details");
@@ -26,22 +25,27 @@ function Home() {
               >
                 Get Started
               </button>
-              {/* <button> Dark</button> */}
             </div>
           </nav>
         </div>
       </header>
       <main>
-        <div className={classes.heroWrap}>
-          <div className={classes.heroImage}>
+        <div className={styles.heroWrap}>
+          <div className={styles.heroText}>
+            <h1>The Free Online Resume Builder</h1>
+            <p>
+              A Quick and Easy Way to Create Your Resume In just four steps.
+              <br /> Save the created Resume in PDF format and send it straight to the hiring manager.
+            </p>
+
+            <button className={styles.heroButton} onClick={() => {
+              navigate("/details");
+            }}>Create Now</button>
+          </div>
+          <div className={styles.heroImage}>
             <img src={H} alt="" />
           </div>
-          <div className={classes.heroText}>
-            A Quick and Easy Way to Create Your Resume In just four steps.
-            Save the created Resume in PDF format send it straight to the hiring manager.
-          </div>
         </div>
-        {/* <img src={Ho} alt="" /> */}
       </main>
     </div>
   );
