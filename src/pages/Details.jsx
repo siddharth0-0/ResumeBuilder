@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import PersonalForm from '../component/PersonalForm'
-import SkillForm from '../component/SkillForm'
-import ExperienceForm from '../component/ExperienceForm'
-import EducationForm from '../component/EducationForm'
+import React, { useState } from "react";
+import PersonalForm from "../component/PersonalForm";
+import SkillForm from "../component/SkillForm";
+import ExperienceForm from "../component/ExperienceForm";
+import EducationForm from "../component/EducationForm";
 
 function Details() {
-
     const [step, setstep] = useState(1);
 
     const nextStep = () => {
@@ -18,31 +17,18 @@ function Details() {
 
     switch (step) {
         case 1:
-            return (
-                <PersonalForm handleNextStep={nextStep} />
-            )
-            break;
+            return <PersonalForm handleNextStep={nextStep} />;
 
         case 2:
-            return (
-                <EducationForm handleNextStep={nextStep} handlePrevStep={prevStep} />
-            )
-            break;
+            return <EducationForm handleNextStep={nextStep} handlePrevStep={prevStep} />
+
 
         case 3:
-            return (
-                <ExperienceForm handleNextStep={nextStep} handlePrevStep={prevStep} />
-            )
-
-            break;
+            return <ExperienceForm handleNextStep={nextStep} handlePrevStep={prevStep} />
 
         case 4:
-            return (
-                <SkillForm handlePrevStep={prevStep} />
-            )
-            break;
+            return <SkillForm handlePrevStep={prevStep} />;
     }
-
 }
 
-export default Details
+export default Details;

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import classes from './PersonalForm.module.css'
 
 const initialValues = {
   firstName: "",
@@ -17,8 +16,6 @@ function PersonalForm(props) {
   const [formValues, setFormValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
-    //const name = e.target.name 
-    //const value = e.target.value 
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -29,7 +26,6 @@ function PersonalForm(props) {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log('personal',formValues)
     localStorage.setItem('personalData', JSON.stringify(formValues));
     props.handleNextStep();
     console.log('sub : ', formValues)
@@ -91,7 +87,7 @@ function PersonalForm(props) {
       </form>
     </div>
 
-  )
+  );
 }
 
 export default PersonalForm
