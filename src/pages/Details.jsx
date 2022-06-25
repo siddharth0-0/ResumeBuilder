@@ -28,6 +28,10 @@ function Details() {
 
         case 4:
             return <SkillForm handlePrevStep={prevStep} />;
+
+        default:
+            console.log('default');
+        break;
     }
 }
 
